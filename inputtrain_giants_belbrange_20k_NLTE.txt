@@ -1,0 +1,13 @@
+NEW1
+
+input=/project2/kicp/pthibodeaux/newgen/giants_belbrange_20k_NLTE.fits
+split=0.3
+tag=_giants_NLTE_3e-03
+direct=params
+num_steps=1e4
+hiddenlayers=2
+finalsigmoid=True
+num_neurons=300
+batch_size=512
+learning_rate=0.003
+save=True
