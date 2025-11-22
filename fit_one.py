@@ -13,7 +13,7 @@ from scipy.optimize import least_squares
 #from astroNN.apogee import wavelength_solution
 from scipy.signal import convolve
 from scipy.stats import norm
-import emcee,corner
+
 print("loadt")
 
 def read_in_neural_network(parz):
@@ -98,7 +98,7 @@ def parse_input_file(paff,index=0):
         pass
     try:
         direct=dicto["direct"]
-        '''
+
         if not os.path.exists(direct):
             print("Making directory: ",direct)
             try:
@@ -107,7 +107,7 @@ def parse_input_file(paff,index=0):
                 pass
         else:
             print(direct,": doesnt need to be made")
-        '''
+
         assert os.path.exists(direct)
     except:
         raise NameError("This file needs to go somewhere... please specify an output directory.")

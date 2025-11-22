@@ -68,16 +68,16 @@ def load_spectra_i(filt,nn,lims,totaltasks,taskid):
     s_labelz[s_labelz>0.5]=0.5
     return waves, s_labelz, fluxs, errrs, oo,flagl 
 
-def write_to_all_a(direct,st,ii,chi_i,chi_f,true_lab,fit_lab,flagl):
+def write_to_all_a(direct,tag,st,ii,chi_i,chi_f,true_lab,fit_lab,flagl):
     assert (len(chi_i)==len(chi_f)) and (len(true_lab)==len(fit_lab))
-    pafz=os.path.join(direct,f"rparamfit{st}.txt")
+    pafz=os.path.join(direct,f"rparamfit{st}_{tag}.txt")
     print(pafz)
     with open(pafz,'a') as mf:
         for q in range(len(chi_i)):
             true_string=" ".join([f"{la:.4f}" for la in true_lab[q]])
             fit_string=" ".join([f"{la:.4f}" for la in fit_lab[q]])
             flag_string=" ".join([f"{int(la)}" for la in flagl[q]])
-            mf.write(f"{ii[q]} {chi_i[q]:.1f} {true_string}  {chi_f[q]:.1f} {fit_string} {flag_string}\n")
+            mf.write(f"{ii[q]} {chi_i[q]:.4f} {true_string}  {chi_f[q]:.4f} {fit_string} {flag_string}\n")
 
 if __name__=="__main__":
     s0=sys.argv[1] # spectra data (list of spectra addresses)
@@ -173,4 +173,4 @@ if __name__=="__main__":
             pass
         except:
             print("failure")
-    write_to_all_a("","_"+os.path.basename(s0).replace(".txt","")+os.path.basename(dic["tag"])+"_"+os.path.basename(s15).replace(".txt",""),ii_s,ci_s,cf_s,p0_s,pf_s,fgz)
+    write_to_all_a("",str(s4),"_"+os.path.basename(s0).replace(".txt","")+os.path.basename(dic["tag"])+"_"+os.path.basename(s15).replace(".txt",""),ii_s,ci_s,cf_s,p0_s,pf_s,fgz)
